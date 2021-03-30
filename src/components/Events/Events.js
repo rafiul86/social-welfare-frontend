@@ -9,7 +9,7 @@ const Events = () => {
             name : data.name,
             imgURL : imgURL
         }
-        const url = `http://localhost:5501/addEvent`;
+        const url = `https://safe-garden-90111.herokuapp.com/addEvent`;
         console.log(eventInfo)
         fetch(url,{
             method : 'POST',

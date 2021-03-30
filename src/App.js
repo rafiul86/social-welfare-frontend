@@ -3,12 +3,15 @@ import {  BrowserRouter as Router,  Switch,  Route,  Link} from "react-router-do
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Events from './components/Events/Events';
+import { createContext, useState } from 'react';
 
-
+export const UserContext = createContext();
 
 function App() {
+  const [loggedInUser, SetLoggedInUser] = useState({})
   return (
-    <div>
+    <UserContext.Provider value={[loggedInUser, SetLoggedInUser]}>
+      <h1>{loggedInUser.displayName}</h1>
       <Router>
       <div>
         <nav>
@@ -17,7 +20,7 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/addEvents">Events</Link>
+              <Link to="/addEvent">Events</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
@@ -25,7 +28,7 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path="/addEvents">
+          <Route path="/addEvent">
             <Events />
           </Route>
           <Route path="/login">
@@ -37,7 +40,7 @@ function App() {
         </Switch>
       </div>
     </Router>
-    </div>
+    </UserContext.Provider>
   );
 }
 
