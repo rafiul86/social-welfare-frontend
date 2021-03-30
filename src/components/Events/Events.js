@@ -9,15 +9,13 @@ const Events = () => {
             name : data.name,
             imgURL : imgURL
         }
-        const url = `https://safe-garden-90111.herokuapp.com/addEvent`;
-        console.log(eventInfo)
+        const url = 'https://safe-garden-90111.herokuapp.com/addEvent';
         fetch(url,{
             method : 'POST',
             headers : {'Content-Type' : 'application/json'},
             body : JSON.stringify(eventInfo)
         })
         .then(res => console.log('server side responded'))
-        
     }
     const handleImageUpload =(event) =>{
          const imageData = new FormData();

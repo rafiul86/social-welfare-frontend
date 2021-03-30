@@ -14,7 +14,7 @@ const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation(); 
-  const { from } = location.state || { from: { pathname: "/" } };
+  const { from } = location.state || { from: { pathname: "/addEvents" } };
     const provider = new firebase.auth.GoogleAuthProvider();
     const handleLogin = () => {
         firebase.auth()

@@ -1,33 +1,27 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
-const PrivateRoute = () => {
+  BrowserRouter as   Route,  Redirect} from "react-router-dom";
+import { UserContext } from "../../App";
 
+
+const PrivateRoute = ({children, ...rest}) => {
+     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     return (
-        <div>
-            <Route
-      {...rest}
-      render={({ location }) =>
-        auth.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-        </div>
+        <Route
+        {...rest}
+        render={({ location }) =>
+          loggedInUser.name ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/addEvents",
+                state: { from: location }
+              }}
+            />
+          )
+        }
+      />
     );
 };
 

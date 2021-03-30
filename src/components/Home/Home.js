@@ -11,10 +11,8 @@ const Home = () => {
         .then(data => setEvents(data))
     },[])
     return (
-        
         <div>
-            <Grid
-  container spacing={8} >
+            <Grid container spacing={8} >
             {
                 events.map(event =><Grid item md = {6} xs ={12} lg={3}><Display event={event}></Display></Grid>)
             }
